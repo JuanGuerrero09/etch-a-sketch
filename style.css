@@ -72,7 +72,7 @@ button{
     height: 15%;
     cursor: pointer;
     transition: 0.5s all;
-    font-size: 1.5rem;
+    font-size: 2vw;
 }
 
 button:hover{
@@ -90,4 +90,12 @@ button:hover{
 .item{
     border: 0.1rem solid #252525;
     width: 100%;    
+}
+
+.rangeDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
