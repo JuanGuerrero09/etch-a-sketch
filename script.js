@@ -9,11 +9,14 @@ let actual_grid = INITIAL_GRID
 
 const container = document.querySelector('.container')
 const colorPicker = document.querySelector('#colorPicker')
+const colorBtn = document.querySelector('.color')
 const eraserBtn = document.querySelector('.eraser')
+const cleanBtn = document.querySelector('.clean')
 const elRange = document.querySelector('.rangeValue')
 const elInput = document.querySelector('#range')
 
-console.log(elInput.value)
+
+//TODO AÑADIR COLOR A LA CLASE DEL ITEM
 
 
 
@@ -21,10 +24,25 @@ console.log(elInput.value)
 
 elInput.addEventListener('input', changeValue)
 elInput.addEventListener('input', grid)
+colorBtn.addEventListener('click', colorClick)
+cleanBtn.addEventListener('click', cleanAll)
 
 
 
 // FUNCTIONS
+
+function cleanAll(){
+    grid(actual_grid)
+}
+
+function colorClick(e){
+    console.log(e)
+}
+
+function changeBackground(e) {
+    console.log(e.target)
+    e.target.style.backgroundColor = 'black'
+}
 
 
 
@@ -35,16 +53,24 @@ function grid(n){
     for (let i = 0; i < n; i++) {
         const item = document.createElement("div");
         
-        item.classList.add("item", "item-" + i);
+        item.classList.add("item");
+
+        item.addEventListener('click', changeBackground)
         
         row.appendChild(item);
-    }
-    for (let i = 0; i < n; i++) {
 
+    }
+
+    for (let i = 0; i < n; i++) {
+        
         const newRow = row.cloneNode(true)
         newRow.classList.add("row", "row-" + i);
         container.appendChild(newRow)
     }
+
+    const allDivs = container.querySelectorAll('div')
+    allDivs.forEach(allDivs => allDivs.addEventListener('click', changeBackground)) 
+
     return
 }
 
@@ -60,8 +86,13 @@ function clearGrid(){
     container.innerHTML = ""
 }
 
+function changeColor(){
+    
+}
+
+
+
 console.log(elInput.value)
 
-grid(5)
-
+grid(actual_grid)
 
