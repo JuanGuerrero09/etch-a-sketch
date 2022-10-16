@@ -81,6 +81,11 @@ button:hover{
     
 }
 
+.picked{
+    background-color: #252525;
+    color: white;
+}
+
 .row{
     width: 100%;
     height: 100%;
