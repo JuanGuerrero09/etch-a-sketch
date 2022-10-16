@@ -1,7 +1,10 @@
 // VARIABLES
 const INITIAL_GRID = 9
-const INITIAL_COLOR = "#FFFFFF"
+const INITIAL_COLOR = 'black'
+const INITIAL_MODE = 'color'
 let actual_grid = INITIAL_GRID
+let actual_color = INITIAL_COLOR
+let actual_mode = INITIAL_MODE
 
 
 
@@ -9,9 +12,7 @@ let actual_grid = INITIAL_GRID
 
 const container = document.querySelector('.container')
 const colorPicker = document.querySelector('#colorPicker')
-const colorBtn = document.querySelector('.color')
-const eraserBtn = document.querySelector('.eraser')
-const cleanBtn = document.querySelector('.clean')
+const allButtons = document.querySelectorAll('button')
 const elRange = document.querySelector('.rangeValue')
 const elInput = document.querySelector('#range')
 
@@ -24,24 +25,45 @@ const elInput = document.querySelector('#range')
 
 elInput.addEventListener('input', changeValue)
 elInput.addEventListener('input', grid)
-colorBtn.addEventListener('click', colorClick)
-cleanBtn.addEventListener('click', cleanAll)
+allButtons.forEach(buttton => buttton.addEventListener('click', colorClick)) 
+colorPicker.addEventListener('change', colorPic)
 
 
 
 // FUNCTIONS
 
+function colorClick(e){
+    allButtons.forEach(buttton => buttton.classList.remove('picked')) 
+    console.log(e.target)
+    e.target.classList.add('picked')
+    if (e.target.value == 'clean'){
+        cleanAll()
+        console.log('hola')
+        actual_color = ''
+    }
+    else if(e.target.value == 'eraser'){
+        actual_color = 'white'
+        actual_mode = 'eraser'
+    }
+    else if(e.target.value == 'color'){
+        actual_color = INITIAL_COLOR
+        actual_mode = 'color'
+    }
+}
+
+function colorPic(e){
+    if (actual_mode != 'eraser'){
+        actual_color = e.target.value
+    }
+}
+
 function cleanAll(){
     grid(actual_grid)
 }
 
-function colorClick(e){
-    console.log(e)
-}
 
 function changeBackground(e) {
-    console.log(e.target)
-    e.target.style.backgroundColor = 'black'
+    e.target.style.backgroundColor = actual_color
 }
 
 
@@ -69,7 +91,7 @@ function grid(n){
     }
 
     const allDivs = container.querySelectorAll('div')
-    allDivs.forEach(allDivs => allDivs.addEventListener('click', changeBackground)) 
+    allDivs.forEach(allDivs => allDivs.addEventListener('mouseover', changeBackground)) 
 
     return
 }
