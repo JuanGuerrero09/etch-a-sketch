@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch a Sketch</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -14,17 +15,16 @@
     </header>
     <main>
         <div class="options">
-            <button class="color">Color</button>
-            <button class="eraser">Eraser</button>
-            <button class="clean">Clean</button>
+            <button class="color picked" value="color">Color</button>
+            <button class="eraser" value="eraser">Eraser</button>
+            <button class="clean" value="clean">Clean</button>
             <input type="color" name="" id="colorPicker">
             <div class="rangeDiv">
                 <div class="rangeValue"></div>
-                <input type="range" name="" id="range" min="2" max="16" step="1">
+                <input type="range" name="" id="range" min="1" max="16" step="1">
             </div>
         </div>
         <div class="container">
-
         </div>
     </main>
     <footer>
