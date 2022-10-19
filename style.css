@@ -93,7 +93,7 @@ button:hover{
 }
 
 .item{
-    border: 0.1rem solid #252525;
+    border: 0.05rem solid #252525;
     width: 100%;    
 }
 
@@ -103,4 +103,17 @@ button:hover{
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+footer a {
+    margin-top: 2rem;
+    position: relative;
+    top: -5%;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: bold;
+    font-family: monospace;
 }
